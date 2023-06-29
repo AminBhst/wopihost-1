@@ -48,8 +48,8 @@ public class WopiHostController {
      * and general information about the capabilities that the WOPI host has on the file.
      */
     @GetMapping("/files/{name}")
-    public ResponseEntity<FileInfo> checkFileInfo(@PathVariable(name = "name") String name) throws Exception {
-        return wopiHostService.getFileInfo(name);
+    public ResponseEntity<FileInfo> checkFileInfo(@PathVariable(name = "name") String name, HttpServletRequest request) throws Exception {
+        return wopiHostService.getFileInfo(name, request);
     }
 
     /**

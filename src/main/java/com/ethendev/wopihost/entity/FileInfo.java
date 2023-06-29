@@ -51,6 +51,9 @@ public class FileInfo implements Serializable {
     @JsonProperty("AllowExternalMarketplace")
     private boolean allowExternalMarketplace = true;
 
+    @JsonProperty("UserFriendlyName")
+    private String UserFriendlyName;
+
     /**
      * indicates that the WOPI client if allow the user to edit the file
      */
@@ -168,6 +171,14 @@ public class FileInfo implements Serializable {
 
     public void setUserCanNotWriteRelative(boolean userCanNotWriteRelative) {
         this.userCanNotWriteRelative = userCanNotWriteRelative;
+    }
+
+    public String getUserFriendlyName() {
+        return UserFriendlyName;
+    }
+
+    public void setUserFriendlyName(String userFriendlyName) {
+        UserFriendlyName = userFriendlyName;
     }
 
     @Override

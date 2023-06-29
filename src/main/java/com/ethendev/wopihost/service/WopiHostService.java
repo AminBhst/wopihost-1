@@ -97,13 +97,16 @@ public class WopiHostService {
      * @return
      * @throws Exception
      */
-    public ResponseEntity<FileInfo> getFileInfo(String fileName) throws Exception {
+    public ResponseEntity<FileInfo> getFileInfo(String fileName, HttpServletRequest request) throws Exception {
         FileInfo info = new FileInfo();
         if (fileName != null && fileName.length() > 0) {
+            String accessToken = request.getParameter("access_token");
+            logger.info("Access token : {}", accessToken);
             File file = new File(filePath + fileName);
             if (file.exists()) {
                 info.setBaseFileName(file.getName());
                 info.setSize(file.length());
+                info.setUserFriendlyName(accessToken);
                 info.setOwnerId("admin");
                 info.setVersion(file.lastModified());
                 info.setSha256(getHash256(file));
